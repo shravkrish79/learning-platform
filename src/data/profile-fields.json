@@ -1,0 +1,62 @@
+[
+  {
+    "key": "FirstName",
+    "id": "firstNameField",
+    "label": "First Name : ",
+    "type": "text",
+    "placeholder": "Enter your first name",
+    "required": true,
+    "autoFocus": true
+  },
+  {
+    "key": "LastName",
+    "id": "lastNameField",
+    "label": "Last Name : ",
+    "type": "text",
+    "placeholder": "Enter your last name",
+    "required": true,
+    "autoFocus": true
+  },
+  {
+    "key": "Gender",
+    "id": "genderField",
+    "label": "Gender : ",
+    "type": "select",
+    "initialValue": "Male",
+    "options": [
+     "Male", "Female", "Other"
+    ],
+    "placeholder": "Gender",
+    "required": true,
+    "autoFocus": true
+  },
+  {
+    "key": "Email",
+    "id": "emailField",
+    "label": "Email : ",
+    "type": "email",
+    "placeholder": "Ex: test@xyz.com",
+    "required": true,
+    "autoFocus": true
+  },
+  {
+    "key": "Password",
+    "id": "passwordField",
+    "label": "Password : ",
+    "type": "password",
+    "placeholder": "",
+    "required": true,
+    "autoFocus": true,
+    "minLength": 6
+  },
+  {
+    "key": "Image",
+    "id": "imageField",
+    "label": "Profile Image : ",
+    "type": "file",
+    "accept": "image/png, image/jpeg, image/webp",
+    "required": false,
+    "autoFocus": true,
+    "multiple": false
+  }
+]

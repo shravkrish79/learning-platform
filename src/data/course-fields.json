@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "key": "courseName",
+        "label": "Course Name:",
+        "type": "text",
+        "required": true,
+        "disabled": false,
+        "placeholder": "SFI",
+        "maxLength": 50
+      },
+      {
+        "id": 2,
+        "key": "courseDesc",
+        "label": "Course Description:",
+        "type": "textarea",
+        "required": true,
+        "disabled": false,
+        "placeholder": "swedish for immigrants",
+        "min": 10,
+        "max": 1000
+      },
+      {
+        "id": 3,
+        "key": "courseImage",
+        "label": "Choose your Course Image:",
+        "type": "file",
+        "required": false,
+        "disabled": false,
+        "accept":"image/png, image/jpeg, image/webp",
+        "multiple":false
+      },
+      {
+        "id": 4,
+        "key": "docFiles",
+        "label": "Course Document Files:",
+        "name":"docFiles[]",
+        "type": "file",
+        "required": false,
+        "disabled": false,
+        "accept":".ppt, .pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "multiple":true
+      },
+      {
+        "id": 5,
+        "key": "videoFiles",
+        "label": "Course Videos:",
+        "name":"videoFiles[]",
+        "type": "file",
+        "required": false,
+        "disabled": false,
+        "accept":"video/*",
+        "multiple":true
+      }
+]
