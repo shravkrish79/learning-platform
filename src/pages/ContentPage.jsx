@@ -41,7 +41,7 @@ export default function ContentPage() {
         Navigate("/");
 
     }
-    // console.log(profileData);
+    console.log(profileData);
     const CourseItems = courseData.map((recs) => (<CourseItem key={recs.id} data={recs} courseData={courseData} profileData={profileData} />));
     return (
         <div id="contentpage">
@@ -52,7 +52,7 @@ export default function ContentPage() {
                     (courseData.length > 0) ? CourseItems : <h1>No Course available.</h1>
                 }</div>
                 <div className="btns">
-                    {isTeacher && <button className="addCourse-btn" onClick={() => Navigate("/addcourse", { state: { courseData } })}>
+                    {isTeacher && <button className="addCourse-btn" onClick={() => Navigate("/addcourse", { state: { courseData,profileData } })}>
                         <AiOutlineFileAdd className="react-icon" /> <span>Add Course</span></button>}
                     {isTeacher && <button className="manageStudent-btn" onClick={() => Navigate("/managestudent", { state: { profileData } })}>Manage Student</button>}
                     <button className="logout-btn" onClick={() => onLogout()} >Logout</button>

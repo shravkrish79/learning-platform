@@ -68,6 +68,7 @@ select {
     height: 25px;
     width: 25px;
     color: yellow;
+    background-color: transparent;
 }
 
 @media screen and (min-width:300px) and (max-width:700px) and (min-height:700px) {}

@@ -1,3 +1,97 @@
-#managestudent{
-    max-width:80vw;
+#managestudent {
+    text-align: center;
+}
+
+.student-page {
+    position: relative;
+    max-width: 80vw;
+    min-height: 60vh;
+    margin: 20vh auto;
+    border: 2px solid #c0a756;
+}
+
+.student-page span{
+    border-bottom: 2px solid #c0a756;
+}
+
+.student-page ul{
+    margin-top: 30px;
+}
+
+.student-page ul li{
+    /* border: 1px solid #c0a756; */
+    width: 70%;
+    margin:0 auto;
+}
+
+.student-page ul li button{
+    margin: 10px;
+}
+
+.student-page .reacticons{
+    display:block;
+    background-color: transparent;
+    color: #070707;
+    height: 20px;
+}
+
+.manage-student-btn{
+    position: absolute;
+    bottom: 30px;
+    /* margin: 20px; */
+    padding: 5px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 2px solid #c0a756;
+    cursor: pointer;
+}
+
+ul li{
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+@media screen and (min-width:300px) and (max-width:700px) and (min-height:700px) {}
+
+@media screen and (min-width:700px) and (max-width:1024px) {
+    .student-page ul li{
+        width: 40%;
+    }
+    ul li{
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width:700px) and (max-height:800px) {
+    .student-page {
+        max-width: 60vw;
+    }
+    .manage-student-btn{
+        width: 20%;
+    }
+    .student-page ul li{
+        width: 50%;
+    }
+    ul li{
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width:1025px) and (min-height:801px) {
+    .student-page {
+        max-width: 40vw;
+    }
+    .student-page ul li{
+        width: 50%;
+    }
+    .manage-student-btn{
+        width: 20%;
+    }
+    ul li{
+        font-size: 30px;
+    }
 }

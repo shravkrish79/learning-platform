@@ -1,26 +1,29 @@
 import courseFields from "../data/course-fields.json";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCourse } from "../state/useCourse";
+import { useNavigate, useLocation } from "react-router-dom";
 import FormFieldGenerator from "../components/form/FormFieldGenerator";
 import { courseManipulation } from "../scripts/courseManipulation";
 
 export default function AddCourse() {
     const [form, setForm] = useState({ courseName: "", courseDesc: "", courseImage: null, docFiles: null, videoFiles: null });
-    const { courseData, setCourseData } = useCourse();
+    // const { courseData, setCourseData } = useCourse();
+    const Location = useLocation();
+    const courseData = Location.state.courseData;
+    const profileData = Location.state.profileData;
     const Navigate = useNavigate();
     // console.log(courseData);
 
     async function onSubmit(event) {
         event.preventDefault();
         document.getElementById("addCourse-submit").disabled = true;
-        const result = await courseManipulation({ form }, null, courseData);
-        setCourseData(result);
+        // const result = 
+        await courseManipulation({ form }, null, courseData);
+        // setCourseData(result);
         document.getElementById("addCourse-submit").disabled = false;
-        Navigate("/contentpage",{state:{courseData}});
+        Navigate("/contentpage",{state:{profileData}});
     }
     function cancelform(){
-        Navigate("/contentpage",{state:{courseData}});
+        Navigate("/contentpage",{state:{profileData}});
     }
     return (
         <div id="addcourse">

@@ -6,6 +6,7 @@ import UpdateCourse from "../pages/UpdateCourse";
 // Project files
 import ContentPage from "../pages/ContentPage";
 import ManageStudent from "../pages/ManageStudent";
+import CourseDetail from "../pages/CourseDetail";
 
 
 export default function LoggedRoutes() {
@@ -16,6 +17,7 @@ export default function LoggedRoutes() {
       <Route path="/addcourse" element={<AddCourse />} />
       <Route path="/updatecourse" element={<UpdateCourse />} />
       <Route path="/managestudent" element={<ManageStudent />} />
+      <Route path="/coursedetail" element={<CourseDetail />} />
     </Routes>
   );
 }

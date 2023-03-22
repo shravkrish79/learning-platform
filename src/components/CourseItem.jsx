@@ -3,11 +3,11 @@ import { deleteDocument } from "../scripts/fireStore";
 import { useUser } from "../state/useUser";
 import { deleteFile } from "../scripts/cloudStorage";
 import { RiDeleteBinLine, RiFileEditLine } from "react-icons/ri";
-import { useState } from "react";
+
 
 export default function CourseItem({ data,courseData,profileData }) {
     const { isTeacher } = useUser();
-    const [ newcourseData, setNewCourseData ] = useState();
+
     const { courseName, courseDesc, courseImage } = data;
     const Navigate = useNavigate();
     // console.log(data);
@@ -16,9 +16,7 @@ export default function CourseItem({ data,courseData,profileData }) {
         if (data.docFiles !== null) { for (let i = 0; i < data.docFiles.length; i++) { await deleteFile(data.docFiles[i]); } }
         if (data.videoFiles !== null) { for (let i = 0; i < data.videoFiles.length; i++) { await deleteFile(data.videoFiles[i]); } }
         await deleteDocument('course', id);
-        let clonedData = courseData.filter((item) => item.id !== id);
-        setNewCourseData(clonedData);
-        Navigate("/contentpage",{state:{newcourseData,profileData}});
+        Navigate("/contentpage",{state:{profileData}});
     }
 
     return (
@@ -31,7 +29,7 @@ export default function CourseItem({ data,courseData,profileData }) {
             {
                 isTeacher && <Link className="deleteCourse-btn" onClick={() => deleteCourse(data.id)} >
                     <RiDeleteBinLine className="reacticons" /></Link>}
-            <Link to="" className="card-click" />
+            <Link to="/coursedetail" state={{profileData, data}} className="card-click" />
         </div>
     );
 }

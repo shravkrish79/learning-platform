@@ -30,7 +30,7 @@ export default function UpdateCourse() {
         Navigate("/contentpage",{state:{profileData}});
     }
     function cancelform() {
-        Navigate("/contentpage",{state:{data}});
+        Navigate("/contentpage",{state:{profileData}});
     }
     return (
         <div id="updatecourse">
