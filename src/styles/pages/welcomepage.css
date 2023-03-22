@@ -1,0 +1,123 @@
+#welcomepage {
+    text-align: center;
+}
+
+.welcome-page {
+    margin: 10vh auto 20px auto;
+    max-width: 80vw;
+}
+
+.welcome-container{
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.welcome-page img{
+    max-width: 60vw;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+.link-btn{
+    display: block;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.link-btn a{
+    display: block;
+    max-width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid #c0a756;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+}
+
+.link-btn a:hover{
+    background-color: #0f0f0f;
+}
+
+@media screen and (min-width:300px) and (max-width:700px) and (min-height:700px) {
+    .welcome-page {
+        margin: 20vh auto 20px auto;
+    }
+}
+
+@media screen and (min-width:700px) and (max-width:1024px) {
+    .welcome-container{
+        max-width: 60vw;
+        margin: 0 auto;
+    }
+    .welcome-page {
+        margin: 20vh auto 30px auto;
+    }
+    .link-btn a{
+        max-width: 30%;
+        margin: 30px auto;
+    }
+}
+
+@media screen and (min-width:700px) and (max-height:800px) {
+    .welcome-page{
+        display: flex;
+        max-width: 80vw;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .welcome-page img{
+        max-width: 30vw;
+        margin: 10px auto;
+        border-radius: 10px;
+    }
+
+    .welcome-container{
+        max-width: 50vw;
+    }
+
+    .link-btn{
+        max-width: 50vw;
+        display: flex;
+        justify-content: center;
+    }
+    .link-btn a{
+        display: inline;
+        width: 20%;
+        max-width: 30%;
+    }
+}
+
+@media screen and (min-width:1025px) and (min-height:801px) {
+    .welcome-page{
+        margin: 25vh auto 100px auto;
+        display: flex;
+        max-width: 60vw;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .welcome-page img{
+        max-width: 20vw;
+        margin: 10px auto;
+        border-radius: 10px;
+    }
+
+    .welcome-container{
+        max-width: 40vw;
+    }
+    
+    .link-btn{
+        max-width: 60vw;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .link-btn a{
+        display: inline;
+        width: 15%;
+        max-width: 30%;
+    }
+}

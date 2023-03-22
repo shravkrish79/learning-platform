@@ -2,16 +2,19 @@ import RecoverImage from "../assets/login-hero.png";
 import ProfileFields from "../data/profile-fields.json";
 import FormFieldGenerator from "../components/form/FormFieldGenerator";
 import { recoverAccount } from "../scripts/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 export default function RecoverPassword() {
     const [form, setForm] = useState({ Email: "" });
     const Navigate = useNavigate();
+    const location = useLocation();
+    const profileData = location.state.profileData;
     const data = ProfileFields.filter((recs) => recs.key === 'Email');
+
     async function onSubmit(event) {
         event.preventDefault();
-        document.getElementById("recover-btn").disabled=true;
+        document.getElementById("recover-btn").disabled = true;
         const result = await recoverAccount(form.Email);
         result.status ? onSuccess() : onFailure(result);
     }
@@ -19,13 +22,13 @@ export default function RecoverPassword() {
     function onSuccess() {
         const text = "Email with a reset link sent. Please check your SPAM/Junk folder as well.";
         alert(text);
-        document.getElementById("recover-btn").disabled=false;
-        Navigate("/login");
+        document.getElementById("recover-btn").disabled = false;
+        Navigate("/login", { state: { profileData } });
     }
 
     function onFailure(result) {
         alert(result.message);
-        document.getElementById("recover-btn").disabled=false;
+        document.getElementById("recover-btn").disabled = false;
     }
 
     return (

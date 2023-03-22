@@ -4,22 +4,29 @@ import { createContext, useContext, useState, } from "react";
 // Properties
 const Context = createContext();
 
-export function UserProvider({ children, storageKey }) {
+export function UserProvider({ children, storageKey, teacherKey }) {
     // Local state
-    const [uid, setUid] = useState(loadUID(storageKey));
-    const [isTeacher, setIsTeacher] = useState(false);
+    const [uid, setUid] = useState(loadStorage(storageKey));
+    const [isTeacher, setIsTeacher] = useState(loadStorage(teacherKey));
     // Properties
-    const value = { uid, setUid, saveUID, isTeacher, setIsTeacher };
+    const value = { uid, setUid, saveUID, isTeacher, setIsTeacher,saveTeacher };
 
     // Pure
-    function loadUID(storageKey) {
-        const data = localStorage.getItem(storageKey);
+    function loadStorage(storeKey) {
+        const data = localStorage.getItem(storeKey);
         return data;
+    }
+
+    if ((isTeacher===null) || (isTeacher===undefined)){
+        saveTeacher(false);
     }
 
     // Impure
     function saveUID(uid) {
         localStorage.setItem(storageKey, uid);
+    }
+    function saveTeacher(teacherId) {
+        localStorage.setItem(teacherKey, teacherId);
     }
 
     return <Context.Provider value={value}>{children}</Context.Provider>;

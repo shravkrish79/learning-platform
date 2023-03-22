@@ -1,0 +1,97 @@
+.signup-page{
+    min-height: 90vh;
+    max-width: 80vw;
+    border: 2px solid #c0a756;
+    margin: 5vh auto;
+    text-align: center;
+}
+
+.signup-page span{
+    border-bottom: 2px solid #c0a756;
+}
+
+.signup-form{
+    margin-top: 30px;
+}
+
+.signup-btn{
+    margin: 30px;
+    padding: 10px;
+    width: 40%;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid #c0a756;
+    cursor: pointer;
+    transition: 0.3s ;
+}
+
+.signup-btn:hover{
+    background-color: #0f0f0f;
+    color: #f3f3f3;
+}
+.login-link {
+    display: block;
+    cursor: pointer;
+    color: #f3f3f3; 
+    text-align: center;
+    width: 80%;
+    margin:0 auto;
+    padding-bottom:30px;
+}
+
+
+@media screen and (min-width:300px) and (max-width:700px) and (min-height:700px) {}
+
+@media screen and (min-width:700px) and (max-width:1024px) {
+    .signup-page span {
+        font-size: 24px;
+    }
+    .signup-btn{
+        width: 25%;
+        margin-bottom: 50px;
+    }
+    .signup-page h1{
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-width:700px) and (max-height:800px) {
+    .signup-page{
+        max-width: 50vw;
+    }
+
+    .signup-form{
+        width: 50%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .signup-btn{
+        width: 35%;
+        margin-bottom: 50px;
+    }
+    .signup-page h1{
+        margin-top: 50px;
+    }
+
+}
+
+@media screen and (min-width:1025px) and (min-height:801px) {
+    .signup-page{
+        max-width: 40vw;
+    }
+
+    .signup-form{
+        width: 50%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .signup-btn{
+        width: 35%;
+        margin-bottom: 50px;
+    }
+    .signup-page h1{
+        margin-top: 50px;
+    }
+}

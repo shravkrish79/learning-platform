@@ -1,3 +1,4 @@
+import "./styles/global/style.css";
 import { BrowserRouter } from "react-router-dom";
 import { useUser } from "./state/useUser";
 

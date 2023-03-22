@@ -1,6 +1,7 @@
 // Node modules
 import { createContext, useContext, useState, } from "react";
 
+
 // Properties
 const ProfileContext = createContext();
 

@@ -1,32 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { deleteDocument } from "../scripts/fireStore";
 import { useUser } from "../state/useUser";
-import { useCourse } from "../state/useCourse";
 import { deleteFile } from "../scripts/cloudStorage";
+import { RiDeleteBinLine, RiFileEditLine } from "react-icons/ri";
+import { useState } from "react";
 
-export default function CourseItem({ data }) {
+export default function CourseItem({ data,courseData,profileData }) {
     const { isTeacher } = useUser();
-    const { courseData, setCourseData } = useCourse();
+    const [ newcourseData, setNewCourseData ] = useState();
     const { courseName, courseDesc, courseImage } = data;
+    const Navigate = useNavigate();
+    // console.log(data);
     async function deleteCourse(id) {
-        await deleteFile(data.courseImage);
-        for (let i = 0; i < data.docFiles.length; i++) { await deleteFile(data.docFiles[i]); }
-        for (let i = 0; i < data.videoFiles.length; i++) { await deleteFile(data.videoFiles[i]); }
+        if (data.courseImage !== null) { await deleteFile(data.courseImage); }
+        if (data.docFiles !== null) { for (let i = 0; i < data.docFiles.length; i++) { await deleteFile(data.docFiles[i]); } }
+        if (data.videoFiles !== null) { for (let i = 0; i < data.videoFiles.length; i++) { await deleteFile(data.videoFiles[i]); } }
         await deleteDocument('course', id);
         let clonedData = courseData.filter((item) => item.id !== id);
-        setCourseData(clonedData);
+        setNewCourseData(clonedData);
+        Navigate("/contentpage",{state:{newcourseData,profileData}});
     }
+
     return (
         <div className="course-card">
-            <a href=".">
-                <h1>{courseName}</h1>
-                <p>{courseDesc}</p>
-                <img src={courseImage} alt={courseName} />
-                {isTeacher && <Link to="/updatecourse" state={{ data }}>Update</Link>}
-                {isTeacher && <Link className="deleteCourse-btn"
-                    onClick={() => deleteCourse(data.id)} >Delete</Link>
-                }
-            </a>
+            <h1>{courseName}</h1>
+            <img src={courseImage} alt={courseName} />
+            <p>{courseDesc}</p>
+            {isTeacher && <Link className="updateCourse-btn" to="/updatecourse" state={{ data,courseData,profileData }}>
+                <RiFileEditLine className="reacticons" /></Link>}
+            {
+                isTeacher && <Link className="deleteCourse-btn" onClick={() => deleteCourse(data.id)} >
+                    <RiDeleteBinLine className="reacticons" /></Link>}
+            <Link to="" className="card-click" />
         </div>
     );
 }

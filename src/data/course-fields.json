@@ -23,7 +23,7 @@
       {
         "id": 3,
         "key": "courseImage",
-        "label": "Choose your Course Image:",
+        "label": "Course Image:",
         "type": "file",
         "required": false,
         "disabled": false,
@@ -33,7 +33,7 @@
       {
         "id": 4,
         "key": "docFiles",
-        "label": "Course Document Files:",
+        "label": "Document Files:",
         "name":"docFiles[]",
         "type": "file",
         "required": false,

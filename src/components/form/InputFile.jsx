@@ -23,7 +23,7 @@ export default function InputFile({ item, state }) {
     }
 
     return (
-        <label className="input-text">
+        <label className="input-field">
             {item.label}
             {item.multiple ?
                 <input

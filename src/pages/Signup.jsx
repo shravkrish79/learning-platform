@@ -1,16 +1,16 @@
 import ProfileFields from "../data/profile-fields.json";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { createAccount } from "../scripts/auth";
 import { createDocument } from "../scripts/fireStore";
 import { ImageProcess } from "../scripts/imageProcess";
-import { useProfile } from "../state/useProfile";
 import FormFieldGenerator from "../components/form/FormFieldGenerator";
 
 
 export default function Signup() {
     const [form, setForm] = useState({ FirstName: "", LastName: "", Gender: "", Email: "", Password: "", Image: undefined });
-    const { profileData, setProfileData } = useProfile();
+    const location = useLocation();
+    const profileData = location.state.profileData;
     const Navigate = useNavigate();
     async function onSubmit(event) {
         event.preventDefault();
@@ -36,8 +36,7 @@ export default function Signup() {
         await createDocument('profile', data);
         const updatedProfileData = [...profileData, { id: result.payload, ...data }]
 
-        setProfileData(updatedProfileData);
-        Navigate("/login");
+        Navigate("/login",{state:{updatedProfileData}});
         alert('Account created!');
         document.getElementById("signup-btn").disabled=false;
     }
@@ -46,7 +45,7 @@ export default function Signup() {
         alert(`Cannot create an account, ${result.message}`);
         document.getElementById("signup-btn").disabled=false;
     }
-
+    // console.log(profileData);
     return (
         <div id="signup">
             <div className="signup-page">
@@ -54,9 +53,9 @@ export default function Signup() {
                 <span>Create your account here!</span>
                 <form className="signup-form" id="signupForm" onSubmit={(event) => onSubmit(event)}>
                     <FormFieldGenerator data={ProfileFields} state={[form, setForm]} />
-                    <button className="signup-btn">SignUp</button>
+                    <button className="signup-btn" id="signup-btn">SignUp</button>
                 </form>
-                <Link to="/login" className="login-link">Already have an account?</Link>
+                <Link to="/login" state={{profileData}} className="login-link">Already have an account?</Link>
             </div>
         </div>
     );

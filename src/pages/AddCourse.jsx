@@ -3,27 +3,36 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCourse } from "../state/useCourse";
 import FormFieldGenerator from "../components/form/FormFieldGenerator";
-import {courseManipulation} from "../scripts/courseManipulation";
+import { courseManipulation } from "../scripts/courseManipulation";
 
 export default function AddCourse() {
     const [form, setForm] = useState({ courseName: "", courseDesc: "", courseImage: null, docFiles: null, videoFiles: null });
-    const {courseData, setCourseData} = useCourse();
+    const { courseData, setCourseData } = useCourse();
     const Navigate = useNavigate();
-    async function onSubmit(event){
+    // console.log(courseData);
+
+    async function onSubmit(event) {
         event.preventDefault();
-        document.getElementById("addCourse-submit").disabled=true;
-        const result = await courseManipulation({form},null,courseData);
+        document.getElementById("addCourse-submit").disabled = true;
+        const result = await courseManipulation({ form }, null, courseData);
         setCourseData(result);
-        document.getElementById("addCourse-submit").disabled=false;
-        Navigate("/contentpage");
+        document.getElementById("addCourse-submit").disabled = false;
+        Navigate("/contentpage",{state:{courseData}});
+    }
+    function cancelform(){
+        Navigate("/contentpage",{state:{courseData}});
     }
     return (
         <div id="addcourse">
-            <h1>Welcome to add course form.</h1>
-            <form className="addcourse-form" id="addCourseForm" onSubmit={(event) => onSubmit(event)}>
-                <FormFieldGenerator data={courseFields} state={[form, setForm]} />
-                <button className="course-submit-btn" id="addCourse-submit" >submit</button>
-            </form>
+            <div className="addcourse-page">
+                <h1>Newbie</h1>
+                <span>Add Course</span>
+                <form className="addcourse-form" id="addCourseForm" onSubmit={(event) => onSubmit(event)}>
+                    <FormFieldGenerator data={courseFields} state={[form, setForm]} />
+                    <button className="course-submit-btn" id="addCourse-submit" >Submit</button>
+                    <button className="course-cancel-btn" id="addCourse-cancel" onClick={()=>cancelform()}>Cancel</button>
+                </form>
+            </div>
         </div>
     );
 }

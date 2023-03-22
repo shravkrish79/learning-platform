@@ -6,7 +6,7 @@ export default function InputTextArea({item,state}){
     const formValue = form[item.key];
   
     return (
-      <label>
+      <label className="input-field-area">
         {item.label}
         <textarea
           // State
