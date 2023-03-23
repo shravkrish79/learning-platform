@@ -1,6 +1,6 @@
 import ProfileFields from "../data/profile-fields.json";
-import { useState } from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { createAccount } from "../scripts/auth";
 import { createDocument } from "../scripts/fireStore";
 import { ImageProcess } from "../scripts/imageProcess";
@@ -10,11 +10,11 @@ import FormFieldGenerator from "../components/form/FormFieldGenerator";
 export default function Signup() {
     const [form, setForm] = useState({ FirstName: "", LastName: "", Gender: "", Email: "", Password: "", Image: undefined });
     const location = useLocation();
-    const profileData = location.state.profileData;
+    let profileData = location.state.profileData;
     const Navigate = useNavigate();
     async function onSubmit(event) {
         event.preventDefault();
-        document.getElementById("signup-btn").disabled=true;
+        document.getElementById("signup-btn").disabled = true;
         console.log(form);
         const result = await createAccount(form.Email, form.Password);
         result.status ? onSuccess(result, event) : onFailure(result);
@@ -35,15 +35,22 @@ export default function Signup() {
         };
         await createDocument('profile', data);
         const updatedProfileData = [...profileData, { id: result.payload, ...data }]
-
-        Navigate("/login",{state:{updatedProfileData}});
+        profileData = updatedProfileData;
+        Navigate("/login", { state: { profileData } });
         alert('Account created!');
-        document.getElementById("signup-btn").disabled=false;
+        document.getElementById("signup-btn").disabled = false;
     }
+
+    useEffect(() => {
+        const localUid = localStorage.getItem('user-id');
+        console.log(localUid)
+        if ((localUid === null) || (localUid === "") || (localUid === undefined)){return;}
+        else { Navigate("/contentpage", { state: { profileData } }) }
+    }, [Navigate, profileData])
 
     function onFailure(result) {
         alert(`Cannot create an account, ${result.message}`);
-        document.getElementById("signup-btn").disabled=false;
+        document.getElementById("signup-btn").disabled = false;
     }
     // console.log(profileData);
     return (
@@ -55,7 +62,7 @@ export default function Signup() {
                     <FormFieldGenerator data={ProfileFields} state={[form, setForm]} />
                     <button className="signup-btn" id="signup-btn">SignUp</button>
                 </form>
-                <Link to="/login" state={{profileData}} className="login-link">Already have an account?</Link>
+                <Link to="/login" state={{ profileData }} className="login-link">Already have an account?</Link>
             </div>
         </div>
     );

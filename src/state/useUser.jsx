@@ -14,6 +14,7 @@ export function UserProvider({ children, storageKey, teacherKey }) {
     // Pure
     function loadStorage(storeKey) {
         const data = localStorage.getItem(storeKey);
+        // console.log(data);
         return data;
     }
 

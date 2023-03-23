@@ -1,7 +1,6 @@
 import FocusImage from "../assets/focus-title.jpg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { useProfile } from "../state/useProfile";
 import { useStatus } from "../state/useStatus";
 import { readDocuments } from "../scripts/fireStore";
 
@@ -14,6 +13,7 @@ export default function WelcomePage() {
             const data = await readDocuments(collectionName).catch(onFail);
             onSuccess(data);
         }
+        setStatus(0);
         loadData(profileCollection);
         function onSuccess(data) {
             setProfileData(data);
@@ -27,11 +27,10 @@ export default function WelcomePage() {
 
     }, [setProfileData, setStatus]);
 
-    // console.log(profileData);
 
     return (
         <div id="welcomepage" >
-            {status === 0 && <p>Loading... </p>}
+            {status === 0 && <p className="loading">Loading... </p>}
             {status === 1 && <div>
                 <div className="welcome-page">
                     <div className="welcome-container">
@@ -44,8 +43,8 @@ export default function WelcomePage() {
 
                 </div>
                 <div className="link-btn">
-                    <Link to="/login" state={{ profileData }}>LogIn</Link>
-                    <Link to="/signup" state={{ profileData }}>SignUp</Link>
+                    <Link to={"/login"} state={{ profileData }}>LogIn</Link>
+                    <Link to={"/signup"} state={{ profileData }}>SignUp</Link>
                 </div>
             </div>
             }

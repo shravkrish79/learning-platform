@@ -36,7 +36,7 @@ export async function downloadFile(filePath) {
 export async function deleteFile(imageURL) {
     const splitImageData = imageURL.split(/%2F(.*?)\?alt/);
     const folderName = splitImageData[0].split('/')[7];
-    const imageName = splitImageData[1];
+    const imageName = (splitImageData[1].replace("%20", " "));
     const filePath = folderName + '/' + imageName;
     const reference = ref(cloudStorage, filePath);
     deleteObject(reference).then(() => {

@@ -13,6 +13,7 @@ export default function UpdateCourse() {
     const profileData =  location.state.profileData;
     // const [ newcourseData, setNewCourseData ] = useState([]);
     const Navigate = useNavigate();
+    if (localStorage.getItem('user-id') === "") { Navigate("/",{state:{profileData}})}
     // console.log(courseData)
     useEffect(() => {
         setForm({

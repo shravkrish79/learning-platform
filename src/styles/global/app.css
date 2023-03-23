@@ -3,10 +3,21 @@
     margin: 0;
 }
 
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  #navbar svg{
+    height: 50px;
+    width: 50px;
+  }
+
 body {
     font-family: "Roboto", "Noto Sans";
-    background: url("../../assets/lms-hero.jpg");
+    background: url("../../assets/lms-image.jpeg") no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     backdrop-filter: saturate(50%);
     color: #f3f3f3;
 }
@@ -22,6 +33,13 @@ h1 {
     font-weight: 700;
     margin: 10px auto;
 }
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px auto;
+}
+
 
 p {
     font-size: 16px;
@@ -71,12 +89,26 @@ select {
     background-color: transparent;
 }
 
+.loading{
+    text-transform: capitalize;
+    font-size: 24px;
+    text-align: center;
+    top:40%;
+    margin: auto;
+}
+
 @media screen and (min-width:300px) and (max-width:700px) and (min-height:700px) {}
 
 @media screen and (min-width:700px) and (max-width:1024px) {
     h1 {
         font-size: 34px;
         margin: 20px auto;
+    }
+
+    h3 {
+        font-size: 26px;
+        font-weight: 500;
+        margin: 10px auto;
     }
 
     p {
@@ -109,6 +141,10 @@ select {
 @media screen and (min-width:700px) and (max-height:800px) {
     h1 {
         font-size: 36px;
+    }
+
+    h3 {
+        font-size: 28px;
     }
 
     p,
@@ -147,6 +183,10 @@ select {
     h1 {
         font-size: 40px;
         margin: 3px auto;
+    }
+
+    h3 {
+        font-size: 32px;
     }
 
     p {

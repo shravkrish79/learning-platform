@@ -10,6 +10,10 @@
     text-align: center;
 }
 
+#contentpage svg {
+    display: inline-block;
+}
+
 .logout-btn,
 .addCourse-btn,
 .manageStudent-btn {
@@ -112,6 +116,11 @@
     bottom: 0;
     right: 10px;
     z-index: 4;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    padding-bottom: 5px;
 }
 
 .updateCourse-btn {
@@ -157,8 +166,15 @@
     .course-data {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
+        margin:0 auto;
         max-width: 70vw;
+    }
+
+    .course-data::after{
+        content: "";
+        flex: 1;
+        justify-content: space-around;
     }
 
     .course-card {
@@ -188,15 +204,16 @@
         width: 80vw;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 50px;
     }
-
 
     .course-card {
         width: 20vw;
         height: 35vh;
         margin: 50px 30px;
     }
+
 
     .logout-btn,
     .addCourse-btn,

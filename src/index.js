@@ -7,6 +7,7 @@ import { StatusProvider } from "./state/useStatus";
 import App from './App';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,7 +15,7 @@ root.render(
       <ProfileProvider>
         <CourseProvider>
           <StatusProvider>
-          <App />
+            <App />
           </StatusProvider>
         </CourseProvider>
       </ProfileProvider>

@@ -1,6 +1,6 @@
 import LoginImage from "../assets/login-hero.png";
 import ProfileFields from "../data/profile-fields.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { login } from "../scripts/auth";
 import { useUser } from "../state/useUser";
@@ -13,7 +13,7 @@ export default function Login() {
     const location = useLocation();
     const profileData = location.state.profileData;
 
-    const { setUid, saveUID, setIsTeacher,saveTeacher } = useUser();
+    const { setUid, saveUID, setIsTeacher, saveTeacher } = useUser();
 
     async function onSubmit(event) {
         event.preventDefault();
@@ -30,7 +30,7 @@ export default function Login() {
             saveTeacher(profile.isTeacher);
             setUid(result.payload);
             saveUID(result.payload);
-            navigate("/contentpage",{state:{profileData}});
+            navigate("/contentpage", { state: { profileData } });
         }
         else {
             alert('Profile Data is not updated. please refresh the home page.');
@@ -38,11 +38,17 @@ export default function Login() {
         document.getElementById("login-btn").disabled = false;
     }
 
+    useEffect(() => {
+        const localUid = localStorage.getItem('user-id');
+        console.log(localUid)
+        if ((localUid === null) || (localUid === "") || (localUid === undefined)){return;}
+        else { navigate("/contentpage", { state: { profileData } }) }
+    }, [navigate, profileData])
+
     function onFailure(result) {
         alert(`Cannot login to the account, ${result.message}`);
         document.getElementById("login-btn").disabled = false;
     }
-    // console.log(profileData);
     return (
         <div id="login" className="login">
             <div className="login-hero-img"><img src={LoginImage} alt="Login screen" /> </div>
@@ -55,8 +61,8 @@ export default function Login() {
                         <button className="login-btn" id="login-btn">LogIn</button>
                     </form>
                     <div className="links">
-                        <Link to="/recoverpassword" state={{profileData}}> Forgot Password? </Link>
-                        <Link to="/signup" state={{profileData}}> Create an account </Link>
+                        <Link to="/recoverpassword" state={{ profileData }}> Forgot Password? </Link>
+                        <Link to="/signup" state={{ profileData }}> Create an account </Link>
                     </div>
                 </div>
             </div>

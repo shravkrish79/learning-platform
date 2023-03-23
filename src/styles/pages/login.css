@@ -151,12 +151,12 @@
         height: 100vh;
     }
     .login-hero-img img{
-        width: 40vw;
-        height: 50vh;
+        width: 80%;
+        height: 40vh;
         margin:5vh auto;
     }
     .login-content {
-        width: 50vw;
+        width: 30vw;
         margin: 10vh auto;
     }
 }

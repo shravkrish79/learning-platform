@@ -12,7 +12,7 @@ export default function AddCourse() {
     const profileData = Location.state.profileData;
     const Navigate = useNavigate();
     // console.log(courseData);
-
+    
     async function onSubmit(event) {
         event.preventDefault();
         document.getElementById("addCourse-submit").disabled = true;
