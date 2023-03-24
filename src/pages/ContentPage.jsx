@@ -12,10 +12,10 @@ export default function ContentPage() {
     const { saveUID, setUid, isTeacher, setIsTeacher, saveTeacher } = useUser();
     const [courseData, setCourseData] = useState([]);
     const { status, setStatus } = useStatus();
-    // setStatus(0);
+    
     const location = useLocation();
     const profileData = location.state.profileData;
-    // console.log(isTeacher);
+    
     useEffect(() => {
         const loadData = async (collectionName) => {
             const data = await readDocuments(collectionName).catch(onFail);
@@ -34,7 +34,7 @@ export default function ContentPage() {
             console.error();
             setStatus(2);
         }
-    }, [setCourseData, setStatus, Navigate]);
+    }, [setCourseData, setStatus, Navigate,setIsTeacher]);
 
     async function checkLogout(path) {
         let nextpath = path;
@@ -42,7 +42,7 @@ export default function ContentPage() {
        await Navigate(nextpath, { state: { profileData, courseData } });
     }
 
-
+    
     function onLogout() {
         saveUID("");
         setUid("");
@@ -50,8 +50,10 @@ export default function ContentPage() {
         setIsTeacher(false);
         Navigate("/");
     }
-    // console.log(courseData);
+
     const CourseItems = (status === 1) && courseData.map((recs) => (<CourseItem key={recs.id} data={recs} state={[courseData,setCourseData]} profileData={profileData} />));
+    // console.log(profileData);
+    console.log(isTeacher);
     return (
         <div id="contentpage">
             {status === 0 && <p>Loading... </p>}
@@ -60,10 +62,10 @@ export default function ContentPage() {
                 <div className="course-data">{
                     (courseData.length > 0) ? CourseItems : <h1>No Course available.</h1>
                 }</div>
-                <div className="btns">
-                    {isTeacher && <button className="addCourse-btn" onClick={() => checkLogout("/addcourse")}>
+                <div className="btns"> 
+                    {(isTeacher) && <button className="addCourse-btn" onClick={() => checkLogout("/addcourse")}>
                         <AiOutlineFileAdd className="react-icon" /> <span>Add Course</span></button>}
-                    {isTeacher && <button className="manageStudent-btn" onClick={() => checkLogout("/managestudent")}>Manage Student</button>}
+                    {(isTeacher) && <button className="manageStudent-btn" onClick={() => checkLogout("/managestudent")}>Manage Student</button>}
                     <button className="logout-btn" onClick={() => onLogout()} >Logout</button>
                 </div>
             </div>

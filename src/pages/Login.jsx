@@ -41,7 +41,7 @@ export default function Login() {
     useEffect(() => {
         const localUid = localStorage.getItem('user-id');
         console.log(localUid)
-        if ((localUid === null) || (localUid === "") || (localUid === undefined)){return;}
+        if ((localUid === null) || (localUid === "") || (localUid === undefined)) { return; }
         else { navigate("/contentpage", { state: { profileData } }) }
     }, [navigate, profileData])
 

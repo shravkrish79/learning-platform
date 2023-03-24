@@ -1,6 +1,9 @@
 @import "./app.css";
 @import "./variable.css";
 
+@import "../components/navbar.css";
+@import "../components/footer.css";
+
 @import "../pages/welcomepage.css";
 @import "../pages/login.css";
 @import "../pages/signup.css";

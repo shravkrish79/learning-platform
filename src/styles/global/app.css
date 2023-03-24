@@ -3,6 +3,32 @@
     margin: 0;
 }
 
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    box-sizing: inherit;
+    min-height: 100%;
+    font-family: "Roboto", "Noto Sans";
+    background: url("../../assets/lms-image.jpeg") no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    backdrop-filter: saturate(50%);
+    color: #f3f3f3;
+}
+
+#root{
+    position: relative;
+    min-height: 100vh;
+    box-sizing: inherit;
+    display: block;
+}
+
+
+
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
@@ -13,14 +39,8 @@ img, picture, video, canvas, svg {
     width: 50px;
   }
 
-body {
-    font-family: "Roboto", "Noto Sans";
-    background: url("../../assets/lms-image.jpeg") no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    backdrop-filter: saturate(50%);
-    color: #f3f3f3;
-}
+
+
 
 a {
     color: #f3f3f3;

@@ -10,7 +10,7 @@ import { useUser } from "../state/useUser";
 
 export default function UnLoggedRoutes() {
     const { uid } = useUser();
-    // console.log(uid);
+    console.log('unloggedroute');
     return (
         <Routes>
             <Route path="/" element={<WelcomePage />} />

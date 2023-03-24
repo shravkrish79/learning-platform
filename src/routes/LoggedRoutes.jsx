@@ -13,6 +13,7 @@ import PageNotFound from "../pages/PageNotFound";
 
 
 export default function LoggedRoutes() {
+  console.log('loggedroute');
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />

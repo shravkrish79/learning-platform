@@ -1,0 +1,37 @@
+#footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 0 auto;
+
+}
+
+.footer-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    margin: 5px auto;
+}
+
+.footer-bottom{
+    text-align: center;
+    margin: 5px auto 15px auto;
+}
+
+@media screen and (min-width:700px) and (max-width:1024px) {
+    .footer-top{
+        gap:25px;
+    }
+}
+
+@media screen and (min-width:700px) and (max-height:800px) {
+
+}
+
+@media screen and (min-width:1025px) and (min-height:801px) {}

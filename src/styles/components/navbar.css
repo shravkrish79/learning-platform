@@ -1,6 +1,9 @@
 #navbar{
     position: fixed;
-    max-height: 100px;
+    height: 80px;
     width: 100%;
 }
 
+/* .calendar-container{
+    width: 20%;
+} */
